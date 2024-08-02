@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Adding the FabricJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js">
+    </script>
+</head>
+
+<body>
+
+    <div id="wrapper" style="display: flex;flex-direction: row;">
+
+        <div style="display: flex;flex-direction: column;width: 200px;margin-left: 10px;margin-right: 10px; ">
+            <span>Name</span>
+            <input id="name" onkeyup="onupdate()">
+            <span>Father Name</span>
+            <input id="fname" onkeyup="onupdate()"> <span>DOB</span>
+            <input id="dob" onkeyup="onupdate()"> <span>Number</span>
+            <input id="no" onkeyup="onupdate()">
+            <span>Image</span>
+            <input id="pic" disabled>
+            <a href="#" id="download" onclick="saveImage()">Download Photo</a></div>
+
+        <canvas id="canvas" width="316.8" height="201.6" style="border:0px solid #000000"> 
+                </canvas>
+        <div style="margin-left: 10px;margin-right: 10px;">
+            <div style="width: 300px; height: 300px; overflow: hidden;">
+                <video style="width: 100%;height:100%;"></video>
+            </div>
+            <canvas style="display: none;" id="videoImg"></canvas>
+            <br />
+            <button id="newphoto">Take A Photo</button>
+            <button id="download" disabled="disabled" style="display: none;">Download Photo</button>
+
+        </div>
+    </div>
+
+    <!-- <button onclick="exportd()">export</button> -->
+
+    <script>
+        //Create a new instance of Canvas
+        var canvas = new fabric.Canvas("canvas");
+
+        fabric.Image.fromURL('./assets/pan-front.jpeg', img => {
+            img.top = 10;
+            img.left = 10;
+            let scaleRatio = Math.min(canvas.width / img.width, canvas.height / img.height);
+
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                scaleX: scaleRatio,
+                scaleY: scaleRatio,
+                left: canvas.width / 2,
+                top: canvas.height / 2,
+                originX: 'middle',
+                originY: 'middle'
+            });
+            canvas.renderAll();
+        });
+        // canvas.loadFromJSON('{"version":"3.6.2","objects":[{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":53,"width":426.72,"height":45.2,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"PRATIK PRAKASH NAIK","fontSize":35,"fontWeight":"normal","fontFamily":"Times New Roman","fontStyle":"normal","fontWeight": "bold","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":80,"width":426.72,"height":45.2,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"PRAKASH RAMCHANDRA NAIK","fontSize":35,"fontWeight":"normal","fontFamily":"Times New Roman","fontStyle":"normal","fontWeight": "bold","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":104,"width":426.72,"height":45.2,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"11/08/1989","fontSize":35,"fontWeight":"normal","fontFamily":"Times New Roman","fontStyle":"normal","fontWeight": "bold","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":130,"width":426.72,"height":45.2,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"AKGPN4826K","fontSize":35,"fontWeight":"normal","fontFamily":"Times New Roman","fontStyle":"normal","fontWeight": "bold","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}}   ]}', function() {
+
+        //     // making sure to render canvas at the end
+        //     canvas.renderAll();
+
+        //     // and checking if object   's "name" is preserved
+
+        // });
+
+
+
+
+        // var canvasBottom = new fabric.Canvas('layer1', {
+        //     position: absolute,
+        //     height: 50,
+        //     width: 50,
+        //     fill: 'black',
+        //     backgroundColor: 'black'
+        // });
+
+
+        // var imgURL = 'http://i.imgur.com/8rmMZI3.jpg';
+
+        // var pugImg = new Image();
+        // pugImg.onload = function(img) {
+        //     var pug = new fabric.Image(pugImg, {
+        //         angle: 45,
+        //         width: 20,
+        //         height: 30,
+
+        //     });
+        // canvas.add(canvasBottom);
+        // };
+        // canvas.renderAll()
+        // Create a new Text instance
+        // var text = new fabric.Text('PRATIK PRAKASH NAIK', {
+        //     fill: 'black',
+        //     fontWeight: 'bold',
+        // });
+
+        // Render the Text on Canvas
+        // canvas.add(text);
+
+
+        // Initiate a Canvas instance 
+        // var canvas = new fabric.Canvas("canvas");
+
+        // var name = new fabric.Text('PRATI', {
+        //     fill: 'green'
+        // });
+
+        // // Render the Text on Canvas
+        // canvas.add(name);
+        function exportd() {
+            console.log(JSON.stringify(canvas))
+        }
+    </script>
+
+    <style>
+        /* #canvas {
+             background: url('./assets/pan-front.jpeg');
+            background-repeat: no-repeat;
+            background-size: contain; 
+        }
+        #wrapper {
+            background-color: #eee;
+            width: 200px;
+            width: 200px;
+        } */
+    </style>
+
+    <script src="./video.js">
+    </script>
+
+    <script>
+        var json = JSON.parse('{"version":"3.6.2","objects":[{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":53,"width":81.59,"height":39.55,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"----a---","fontSize":35,"fontWeight":"bold","fontFamily":"Times New Roman","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":80,"width":81.59,"height":39.55,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"---b----","fontSize":35,"fontWeight":"bold","fontFamily":"Times New Roman","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":104,"width":81.59,"height":39.55,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"----c---","fontSize":35,"fontWeight":"bold","fontFamily":"Times New Roman","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":10,"top":130,"width":81.59,"height":39.55,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.3,"scaleY":0.3,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"---d----","fontSize":35,"fontWeight":"bold","fontFamily":"Times New Roman","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"image","version":"3.6.2","originX":"left","originY":"top","left":230,"top":125,"width":132.28,"height":90.49,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":0,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.52,"scaleY":0.69,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"crossOrigin":"","cropX":0,"cropY":0,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=","filters":[]}],"backgroundImage":{"type":"image","version":"3.6.2","originX":"middle","originY":"middle","left":158,"top":100.5,"width":500,"height":312,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":0,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.63,"scaleY":0.63,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"crossOrigin":"","cropX":0,"cropY":0,"src":"./assets/pan-front.jpeg","filters":[]}}');
+
+        function onupdate() {
+
+            json.objects[0].text = document.getElementById("name").value.toUpperCase();
+            json.objects[1].text = document.getElementById("fname").value.toUpperCase();
+            json.objects[2].text = document.getElementById("dob").value.toUpperCase();
+            json.objects[3].text = document.getElementById("no").value.toUpperCase();
+            if (document.getElementById("pic").value != '') {
+                json.objects[4].src = document.getElementById("pic").value;
+            }
+            // json.backgroundImage. = document.getElementById("no").value.toUpperCase();
+
+            //  console.log(json.objects[0].text)
+            canvas.loadFromJSON(json, function() {
+
+                // making sure to render canvas at the end
+                canvas.renderAll();
+
+                // and checking if object   's "name" is preserved
+
+            });
+        }
+
+        function saveImage(e) {
+
+
+            document.querySelector('#canvas').toBlob(function(blob) {
+                var link = document.createElement('a');
+                link.download = document.getElementById("no").value + '_frontside.png';
+                link.setAttribute('href', URL.createObjectURL(blob));
+                link.dispatchEvent(new MouseEvent('click'));
+
+            }, 'image/jpeg', 1);
+
+
+            // var canvas = document.getElementById('canvas');
+            // var dataURL = canvas.toDataURL('image/png');
+            // var link = document.createElement('a');
+            // link.href = dataURL;
+
+            // link.download = document.getElementById("no").value + '_frontside.png';
+            // link.setAttribute('href', URL.createObjectURL(blob));
+            // link.dispatchEvent(new MouseEvent('click'));
+
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild('link');
+            // this.href = canvas.toDataURL({
+            //     format: 'png',
+            //     quality: 0.8
+            // });
+            // console.log("hieee");
+            // this.download = 'frontside.png'
+        }
+    </script>
+
+</body>
+
+
+</html>
