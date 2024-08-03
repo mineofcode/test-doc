@@ -12,25 +12,11 @@
     <div id="wrapper" style="display: flex;flex-direction: row;">
 
         <div style="display: flex;flex-direction: column;width: 200px;margin-left: 10px;margin-right: 10px; ">
-            <span>Number</span>
-            <input id="no" onkeyup="onupdate()">
-            <span>Name</span>
-            <input id="name" onkeyup="onupdate()">
-            <span>Name Hindi</span>
-            <input id="hindi" onkeyup="onupdate()">
-            <span>Dob</span>
-            <input id="dob" onkeyup="onupdate()">
-            <span>Gender</span>
-            <input id="gender" onkeyup="onupdate()">
+            <span>Selected</span>
+            <textarea id="selectd" onkeyup="onselectedupdate()"></textarea>
+
             <span>Image</span>
             <input id="pic" disabled>
-            <span>Address</span>
-            <textarea id="address" onkeyup="onupdate()"></textarea>
-
-            <span>Address Hindi</span>
-            <textarea id="addressHindi" onkeyup="onupdate()"></textarea>
-
-
 
             <a href="#" id="download" onclick="saveImage()">Download Photo</a></div>
 
@@ -55,8 +41,26 @@
 
 
     <script>
+        var d = '{\"version\":\"3.6.2\",\"objects\":[{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":100,\"top\":165.6,\"width\":91,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.03,\"scaleY\":1.03,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"8698 3013 3361\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":100,\"top\":66,\"width\":156.35,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.78,\"scaleY\":0.78,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"PRATIK PRAKASH NAIK\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":100,\"top\":52,\"width\":94.12,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.65,\"scaleY\":0.65,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"\u092A\u094D\u0930\u0924\u093F\u0915 \u092A\u094D\u0930\u0915\u093E\u0936 \u0928\u093E\u0908\u0915\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":101,\"top\":84,\"width\":168.48,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.57,\"scaleY\":0.57,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"\u091C\u0928\u094D\u092E \u0924\u093E\u0930\u0940\u0916 \/ DOB: 11\/08\/1989\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":102,\"top\":99,\"width\":2,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.57,\"scaleY\":0.57,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":347,\"top\":49,\"width\":520.74,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.66,\"scaleY\":0.66,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"\u092A\u0924\u093E \u0938\u0940-1201, \u090F\u0915\u0926\u0902\u0924 \u0938\u093E\u0935\u0932\u093E\u0930\u093E\u092E \u0938\u0943\u0937\u094D\u091F\u093F, \u0906\u0930\u091F\u0940\u0913 \u0930\u094B\u0921, \u0915\u0932\u094D\u092F\u093E\u0923 \\n\u092A\u0936\u094D\u091A\u093F\u092E, \u0915\u0932\u094D\u092F\u093E\u0923, \u0920\u093E\u0923\u0947, \u092E\u0939\u093E\u0930\u093E\u0937\u094D\u091F\u094D\u0930, 421301\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":348,\"top\":107,\"width\":595.31,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.65,\"scaleY\":0.65,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"Address: C-1201, Ekdant Sawlaram Srushti, Rto Road, Kalyan \\nWest, Kalyan, Thane,Maharashtra, 421301\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":424.47,\"top\":166.53,\"width\":91,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.05,\"scaleY\":1.05,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"8698 3013 3361\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"image\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":10,\"top\":53,\"width\":132.28,\"height\":90.49,\"fill\":\"rgb(0,0,0)\",\"stroke\":null,\"strokeWidth\":0,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.61,\"scaleY\":0.99,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"crossOrigin\":\"\",\"cropX\":0,\"cropY\":0,\"src\":\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3\/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ\/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e\/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b\/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC\/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V\/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO\/Mn\/m8R+h6rYSUb3ekokRY6f\/YukArN979jcW+V\/S8g0eT\/N3VN3kTqWbQ428m9\/8k0P\/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc\/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4\/MNCFwg59oWVeYhkzgN\/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW\/n+uMPFiRwHB2I7ih8ciHFxIkd\/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3\/zMDz8usXC3ddaHBj1GHj\/As08fwTS7Kt1HBTmyN29vdwAw+\/wbwLVOJ3uAD1wi\/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=\",\"filters\":[]}],\"backgroundImage\":{\"type\":\"image\",\"version\":\"3.6.2\",\"originX\":\"middle\",\"originY\":\"middle\",\"left\":318,\"top\":105,\"width\":1326,\"height\":432,\"fill\":\"rgb(0,0,0)\",\"stroke\":null,\"strokeWidth\":0,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.48,\"scaleY\":0.48,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"crossOrigin\":\"\",\"cropX\":0,\"cropY\":0,\"src\":\".\/assets\/aadhar-short.png\",\"filters\":[]}}';
         //Create a new instance of Canvas
         var canvas = new fabric.Canvas("canvas");
+        canvas.on({
+            'selection:updated': HandleElement,
+            'selection:created': HandleElement
+        });
+        var sel = {};
+
+        function HandleElement(obj) {
+            sel = obj;
+            document.getElementById("selectd").value = obj.target.text;
+
+        }
+
+        function onselectedupdate() {
+            var object = canvas.getActiveObject();
+            object.set("text", document.getElementById("selectd").value.toUpperCase())
+            canvas.renderAll();
+        }
 
         fabric.Image.fromURL('./assets/aadhar-short.png', img => {
             img.top = 10;
@@ -75,102 +79,25 @@
         });
 
 
-        canvas.loadFromJSON('{"version":"3.6.2","objects":[{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":100,"top":165.6,"width":91,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":1.03,"scaleY":1.03,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"8698 3013 3361","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":100,"top":66,"width":156.35,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.78,"scaleY":0.78,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"PRATIK PRAKASH NAIK","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":100,"top":52,"width":94.12,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.65,"scaleY":0.65,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"प्रतिक प्रकाश नाईक","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":101,"top":84,"width":168.48,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.57,"scaleY":0.57,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"जन्म तारीख / DOB: 11/08/1989","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":102,"top":99,"width":2,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.57,"scaleY":0.57,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":347,"top":49,"width":520.74,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.66,"scaleY":0.66,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"पता सी-1201, एकदंत सावलाराम सृष्टि, आरटीओ रोड, कल्याण पश्चिम, कल्याण, ठाणे, महाराष्ट्र, 421301","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":348,"top":107,"width":595.31,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.65,"scaleY":0.65,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"Address: C-1201, Ekdant Sawlaram Srushti, Rto Road, Kalyan West, Kalyan, Thane,Maharashtra, 421301","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":424.47,"top":166.53,"width":91,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":1.05,"scaleY":1.05,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"8698 3013 3361","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"image","version":"3.6.2","originX":"left","originY":"top","left":10,"top":53,"width":132.28,"height":90.49,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":0,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.61,"scaleY":0.99,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"crossOrigin":"","cropX":0,"cropY":0,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=","filters":[]}],"backgroundImage":{"type":"image","version":"3.6.2","originX":"middle","originY":"middle","left":318,"top":105,"width":1326,"height":432,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":0,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.48,"scaleY":0.48,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"crossOrigin":"","cropX":0,"cropY":0,"src":"./assets/aadhar-short.png","filters":[]}}', function() {
+        function loadCanvas(d) {
+            canvas.clear();
+            canvas.loadFromJSON(d, canvas.renderAll.bind(canvas), function(o, object) {
+                // object.set('selectable', false);
 
-            // making sure to render canvas at the end
-            canvas.renderAll();
+                object.setControlsVisibility({
+                    mt: false,
+                    mb: false,
+                    ml: false,
+                    mr: false,
+                    bl: false,
+                    br: false,
+                    tl: false,
+                    tr: false,
+                    mtr: false,
+                });
 
-            // and checking if object   's "name" is preserved
-
-        });
-
-
-
-
-        // var canvasBottom = new fabric.Canvas('layer1', {
-        //     position: absolute,
-        //     height: 50,
-        //     width: 50,
-        //     fill: 'black',
-        //     backgroundColor: 'black'
-        // });
-
-
-        // var imgURL = 'http://i.imgur.com/8rmMZI3.jpg';
-
-        // var pugImg = new Image();
-        // pugImg.onload = function(img) {
-        //     var pug = new fabric.Image(pugImg, {
-        //         angle: 45,
-        //         width: 20,
-        //         height: 30,
-
-        //     });
-        // canvas.add(canvasBottom);
-        // };
-        // canvas.renderAll()
-        // Create a new Text instance
-        // var text = new fabric.Text('PRATIK PRAKASH NAIK', {
-        //     fill: 'black',
-        //     fontWeight: 'bold',
-        // });
-
-        // Render the Text on Canvas
-        // canvas.add(text);
-
-
-        // Initiate a Canvas instance 
-        // var canvas = new fabric.Canvas("canvas");
-
-        // var name = new fabric.Text('PRATI', {
-        //     fill: 'green'
-        // });
-
-        // // Render the Text on Canvas
-        // canvas.add(name);
-        function exportd() {
-            console.log(JSON.stringify(canvas))
-        }
-    </script>
-
-    <style>
-        /* #canvas {
-             background: url('.//pan-front.jpeg');
-            background-repeat: no-repeat;
-            background-size: contain; 
-        }
-        #wrapper {
-            background-color: #eee;
-            width: 200px;
-            width: 200px;
-        } */
-    </style>
-
-    <script src="./video.js">
-    </script>
-
-    <script>
-        var json = JSON.parse('{"version":"3.6.2","objects":[{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":100,"top":165.6,"width":91,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":1.03,"scaleY":1.03,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"8698 3013 3361","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":100,"top":66,"width":156.35,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.78,"scaleY":0.78,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"PRATIK PRAKASH NAIK","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":100,"top":52,"width":94.12,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.65,"scaleY":0.65,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"प्रतिक प्रकाश नाईक","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":101,"top":84,"width":168.48,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.57,"scaleY":0.57,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"जन्म तारीख / DOB: 11/08/1989","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":102,"top":99,"width":2,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.57,"scaleY":0.57,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":347,"top":49,"width":520.74,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.66,"scaleY":0.66,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"पता सी-1201, एकदंत सावलाराम सृष्टि, आरटीओ रोड, कल्याण पश्चिम, कल्याण, ठाणे, महाराष्ट्र, 421301","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":348,"top":107,"width":595.31,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.65,"scaleY":0.65,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"Address: C-1201, Ekdant Sawlaram Srushti, Rto Road, Kalyan West, Kalyan, Thane,Maharashtra, 421301","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"text","version":"3.6.2","originX":"left","originY":"top","left":424.47,"top":166.53,"width":91,"height":15.82,"fill":"black","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":1.05,"scaleY":1.05,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"text":"8698 3013 3361","fontSize":"14","fontWeight":"normal","fontFamily":"Calibri","fontStyle":"normal","lineHeight":1.16,"underline":false,"overline":false,"linethrough":false,"textAlign":"left","textBackgroundColor":"","charSpacing":0,"styles":{}},{"type":"image","version":"3.6.2","originX":"left","originY":"top","left":10,"top":53,"width":132.28,"height":90.49,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":0,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.61,"scaleY":0.99,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"crossOrigin":"","cropX":0,"cropY":0,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=","filters":[]}],"backgroundImage":{"type":"image","version":"3.6.2","originX":"middle","originY":"middle","left":318,"top":105,"width":1326,"height":432,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":0,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.48,"scaleY":0.48,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"crossOrigin":"","cropX":0,"cropY":0,"src":"./assets/aadhar-short.png","filters":[]}}');
-
-        function onupdate() {
-
-            json.objects[0].text = document.getElementById("no").value.toUpperCase();
-            json.objects[1].text = document.getElementById("name").value.toUpperCase();
-            json.objects[2].text = document.getElementById("hindi").value;
-            json.objects[3].text = document.getElementById("dob").value;
-            json.objects[4].text = document.getElementById("gender").value;
-
-            json.objects[5].text = document.getElementById("addressHindi").value;
-            json.objects[6].text = document.getElementById("address").value;
-            json.objects[7].text = document.getElementById("no").value;
-
-            if (document.getElementById("pic").value != '') {
-                json.objects[8].src = document.getElementById("pic").value;
-            }
-            // json.backgroundImage. = document.getElementById("no").value.toUpperCase();
-
-            //  console.log(json.objects[0].text)
-            canvas.loadFromJSON(json, function() {
+                object.lockMovementX = true
+                object.lockMovementY = true
 
                 // making sure to render canvas at the end
                 canvas.renderAll();
@@ -180,55 +107,44 @@
             });
         }
 
+
+        loadCanvas(d);
+
+
+
+        function exportd() {
+            console.log(JSON.stringify(canvas))
+        }
+    </script>
+
+
+
+    <script src="./video.js">
+    </script>
+
+    <script>
+        function onupdate() {
+            var json = JSON.parse(JSON.stringify(canvas));
+            if (document.getElementById("pic").value != '') {
+                json.objects[8].src = document.getElementById("pic").value;
+            }
+            loadCanvas(json);
+        }
+
+
+
         function saveImage(e) {
 
 
             document.querySelector('#canvas').toBlob(function(blob) {
                 var link = document.createElement('a');
-                link.download = document.getElementById("no").value + '_frontside.png';
+                link.download = 'aadhar.png';
                 link.setAttribute('href', URL.createObjectURL(blob));
                 link.dispatchEvent(new MouseEvent('click'));
 
             }, 'image/jpeg', 1);
 
 
-            // var canvas = document.getElementById('canvas');
-            // var dataURL = canvas.toDataURL('image/png');
-            // var link = document.createElement('a');
-            // link.href = dataURL;
-
-            // link.download = document.getElementById("no").value + '_frontside.png';
-            // link.setAttribute('href', URL.createObjectURL(blob));
-            // link.dispatchEvent(new MouseEvent('click'));
-
-            // document.body.appendChild(link);
-            // link.click();
-            // document.body.removeChild('link');
-            // this.href = canvas.toDataURL({
-            //     format: 'png',
-            //     quality: 0.8
-            // });
-            // console.log("hieee");
-            // this.download = 'frontside.png'
-        }
-
-
-        function addText() {
-            var text = new fabric.Text('PRATIK PRAKASH NAIK', {
-                fill: 'black',
-                fontSize: '14',
-                fontWeight: 'bold',
-            });
-            canvas.add(text);
-        }
-
-        function addImage() {
-            var text = new fabric.Text('PRATIK PRAKASH NAIK', {
-                fill: 'black',
-                fontSize: '14',
-                fontWeight: 'bold',
-            });
-            canvas.add(text);
         }
     </script>
 
