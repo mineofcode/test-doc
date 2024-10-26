@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Adding the FabricJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js">
+    </script>
+</head>
+
+<body>
+    <div style="display: flex">
+        <a href="../pan-mock/index.html">PAN</a> &nbsp;|&nbsp;
+        <a href="../ad-mock/index.html">Aadhar</a> &nbsp;|&nbsp;
+        <a href="../dl-mock/index.html">Driving License</a> &nbsp;|&nbsp;
+        <a href="../voter-mock/index.html">Voter Id</a>
+    </div>
+    <div id="wrapper" style="display: flex;flex-direction: row;">
+
+        <div style="display: flex;flex-direction: column;width: 200px;margin-left: 10px;margin-right: 10px; ">
+            <span>Selected</span>
+            <textarea id="selectd" onkeyup="onselectedupdate()"></textarea>
+
+            <span>Image</span>
+            <input id="pic" disabled>
+
+            <a href="#" id="download1" onclick="saveImage()">Download Photo</a></div>
+
+        <canvas id="canvas" width="636" height="500" style="border:0px solid #000000">
+                </canvas>
+        <div style="margin-left: 10px;margin-right: 10px;">
+            <div style="width: 300px; height: 300px; overflow: hidden;">
+                <video style="width: 100%;height:100%;"></video>
+            </div>
+            <canvas style="display: none;" id="videoImg"></canvas>
+            <br />
+            <button id="newphoto">Take A Photo</button>
+            <button id="download" disabled="disabled" style="display: none;">Download Photo</button>
+
+        </div>
+    </div>
+
+    <button onclick="exportd()">export</button>
+
+<!--     <button onclick="addText()">Add Text</button>-->
+<!--     <button onclick="AddImage()">Add Image</button>-->
+<!--     <button onclick="clone()">Clone</button>-->
+<!--    <button onclick="remove()"><Remove></Remove></button>-->
+
+
+    <script>
+            var d = '{\"version\":\"3.6.2\",\"objects\":[{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":17,\"top\":404.6,\"width\":35.29,\"height\":34.17,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.03,\"scaleY\":1.04,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"पिता \\nका नाम\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":102,\"top\":99,\"width\":2,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.57,\"scaleY\":0.57,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":342,\"top\":38,\"width\":263.83,\"height\":34.17,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.03,\"scaleY\":1.03,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"पता सी-1201, एकदंत सावलाराम सृष्टि, आरटीओ रोड, \\nकल्याण पश्चिम, कल्याण, ठाणे, महाराष्ट्र, 421301\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":343,\"top\":108,\"width\":248.08,\"height\":52.52,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.99,\"scaleY\":0.99,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"Address: C-1201, Ekdant Sawlaram Srushti,\\nRto Road, Kalyan West, Kalyan, \\nThane,Maharashtra, 421301\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"image\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":95,\"top\":128.5,\"width\":132.28,\"height\":90.49,\"fill\":\"rgb(0,0,0)\",\"stroke\":null,\"strokeWidth\":0,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1,\"scaleY\":1.99,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"crossOrigin\":\"\",\"cropX\":0,\"cropY\":0,\"src\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=\",\"filters\":[]},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":16,\"top\":444.6,\"width\":35.77,\"height\":34.17,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.1,\"scaleY\":1.1,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"Father\\nName\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":17,\"top\":340.6,\"width\":18.14,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.21,\"scaleY\":1.21,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"नाम\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":17,\"top\":371.6,\"width\":33.43,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.06,\"scaleY\":1.06,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"Name\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":85,\"top\":339.6,\"width\":94.12,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.32,\"scaleY\":1.32,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"प्रतिक प्रकाश नाईक\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":87,\"top\":373.6,\"width\":156.35,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.16,\"scaleY\":1.16,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"PRATIK PRAKASH NAIK\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":87,\"top\":406.6,\"width\":97.23,\"height\":15.82,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.23,\"scaleY\":1.23,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"प्रकाश रामचंद्र नाईक\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}},{\"type\":\"text\",\"version\":\"3.6.2\",\"originX\":\"left\",\"originY\":\"top\",\"left\":86,\"top\":445.6,\"width\":169.98,\"height\":34.17,\"fill\":\"black\",\"stroke\":null,\"strokeWidth\":1,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":1.08,\"scaleY\":1.08,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"text\":\"PRAKASH RAMCHANDRA\\nNAIK\",\"fontSize\":\"14\",\"fontWeight\":\"normal\",\"fontFamily\":\"Calibri\",\"fontStyle\":\"normal\",\"lineHeight\":1.16,\"underline\":false,\"overline\":false,\"linethrough\":false,\"textAlign\":\"left\",\"textBackgroundColor\":\"\",\"charSpacing\":0,\"styles\":{}}],\"backgroundImage\":{\"type\":\"image\",\"version\":\"3.6.2\",\"originX\":\"middle\",\"originY\":\"middle\",\"left\":318,\"top\":250,\"width\":700,\"height\":547,\"fill\":\"rgb(0,0,0)\",\"stroke\":null,\"strokeWidth\":0,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeMiterLimit\":4,\"scaleX\":0.91,\"scaleY\":0.91,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"clipTo\":null,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"transformMatrix\":null,\"skewX\":0,\"skewY\":0,\"crossOrigin\":\"\",\"cropX\":0,\"cropY\":0,\"src\":\"file:///Users/admin/Documents/gen/moc-doc/voter-mock/assets/voterid.jpeg\",\"filters\":[]}}   ';
+        //Create a new instance of Canvas
+        var canvas = new fabric.Canvas("canvas");
+        canvas.on({
+            'selection:updated': HandleElement,
+            'selection:created': HandleElement
+        });
+        var sel = {};
+
+        function HandleElement(obj) {
+            sel = obj;
+            document.getElementById("selectd").value = obj.target.text;
+
+        }
+
+        function onselectedupdate() {
+            var object = canvas.getActiveObject();
+            object.set("text", document.getElementById("selectd").value)
+            canvas.renderAll();
+        }
+
+        fabric.Image.fromURL('./assets/voterid.jpeg?d='+Date.now(), img => {
+            img.top = 10;
+            img.left = 10;
+            let scaleRatio = Math.min(canvas.width / img.width, canvas.height / img.height);
+
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                scaleX: scaleRatio,
+                scaleY: scaleRatio,
+                left: canvas.width / 2,
+                top: canvas.height / 2,
+                originX: 'middle',
+                originY: 'middle'
+            });
+            canvas.renderAll();
+        });
+
+
+        function loadCanvas(d) {
+            canvas.clear();
+            canvas.loadFromJSON(d, canvas.renderAll.bind(canvas), function(o, object) {
+                // object.set('selectable', false);
+
+                object.setControlsVisibility({
+                    mt: false,
+                    mb: false,
+                    ml: false,
+                    mr: false,
+                    bl: false,
+                    br: false,
+                    tl: false,
+                    tr: false,
+                    mtr: false,
+                });
+
+                object.lockMovementX = true
+                object.lockMovementY = true
+
+                // making sure to render canvas at the end
+                canvas.renderAll();
+
+                // and checking if object   's "name" is preserved
+
+            });
+        }
+
+
+        loadCanvas(d);
+
+
+
+        function exportd() {
+            console.log(JSON.stringify(canvas))
+        }
+    </script>
+
+
+
+    <script src="./video.js"    >
+    </script>
+
+    <script>
+        function onupdate() {
+            var json = JSON.parse(JSON.stringify(canvas));
+            if (document.getElementById("pic").value != '') {
+                json.objects[4].src = document.getElementById("pic").value;
+            }
+            loadCanvas(json);
+        }
+
+
+
+        function saveImage(e) {
+
+
+            document.querySelector('#canvas').toBlob(function(blob) {
+                var link = document.createElement('a');
+                link.download = 'voter.jpg';
+                link.setAttribute('href', URL.createObjectURL(blob));
+                link.dispatchEvent(new MouseEvent('click'));
+
+            }, 'image/jpeg', 1);
+
+
+        }
+
+         function addText() {
+            var text = new fabric.Text('Text', {
+                fill: 'black',
+                fontSize: '14',
+                fontWeight: 'bold',
+            });
+            canvas.add(text);
+             canvas.renderAll();
+        }
+
+        function remove() {
+            canvas.remove(canvas.getActiveObject());
+             canvas.renderAll();
+        }
+
+        function clone() {
+         canvas.getActiveObject().clone(function(object) {
+                      canvas.discardActiveObject();
+                        object.set("top", object.top + 5);
+                        object.set("left", object.left + 5);
+                        object.set("evented", true);
+                        canvas.add(object);
+                        canvas.setActiveObject(object);
+                        canvas.requestRenderAll();
+	        });
+
+
+        }
+
+
+
+        function addImage() {
+            var text = new fabric.Text('PRATIK PRAKASH NAIK', {
+                fill: 'black',
+                fontSize: '14',
+                fontWeight: 'bold',
+            });
+            canvas.add(text);
+             canvas.renderAll();
+        }
+    </script>
+
+</body>
+
+
+</html>
